@@ -1,0 +1,11 @@
+.chordCompare {
+  display: flex;
+  flex-direction: row;
+}
+
+/* Change flex-direction to column on smaller screens */
+@media (max-width: 900px) {
+  .chordCompare {
+    flex-direction: column;
+  }
+}

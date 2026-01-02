@@ -10,6 +10,7 @@ import {
 import { MetronomeAudio } from "@/lib/audio-utils";
 import ChordDisplay from "@/components/ChordDisplay";
 import ProgressBar from "@/components/ProgressBar";
+import styles from "./page.module.css";
 
 export default function SwitchTrainer() {
   const [bpm, setBpm] = useState(60);
@@ -97,11 +98,7 @@ export default function SwitchTrainer() {
     <main
       style={{
         minHeight: "100vh",
-        backgroundColor: isActive
-          ? activeIndex === 0
-            ? "#f8fafc"
-            : "#fffbeb"
-          : "#ffffff",
+        backgroundColor: "#f8fafc",
         padding: "40px",
         transition: "background-color 0.5s ease",
       }}
@@ -157,7 +154,7 @@ export default function SwitchTrainer() {
               value={bpm}
               onChange={(e) => setBpm(Number(e.target.value))}
               style={{
-                width: "50px",
+                width: "70px",
                 border: "none",
                 background: "transparent",
                 textAlign: "center",
@@ -172,6 +169,7 @@ export default function SwitchTrainer() {
               padding: "10px",
               borderRadius: "8px",
               border: "1px solid #cbd5e1",
+              color: "black",
               background: "white",
               cursor: "pointer",
             }}
@@ -210,11 +208,11 @@ export default function SwitchTrainer() {
         {/* The Chord Switching Grid */}
         <div
           style={{
-            display: "grid",
             gridTemplateColumns: "1fr 1fr",
             gap: "30px",
             marginTop: "40px",
           }}
+          className={styles.chordCompare}
         >
           {chordPair.map((chord, index) => {
             const data = getChordData(chord.note, chord.form, chord.version);
@@ -239,6 +237,7 @@ export default function SwitchTrainer() {
                   transform: isCurrent ? "scale(1.1)" : "scale(0.9)",
                   // 4. OPACITY: Dim the inactive one almost entirely
                   opacity: isCurrent ? 1 : 0.2,
+                  height: "500px",
                   transition: "all 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
                   position: "relative",
                 }}
