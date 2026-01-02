@@ -11,7 +11,7 @@ export class MetronomeAudio {
     osc.frequency.value = isDownbeat ? 880 : 440;
     envelope.gain.value = 1;
     envelope.gain.exponentialRampToValueAtTime(
-      0.001,
+      0.00001,
       this.audioContext.currentTime + 0.1
     );
 
