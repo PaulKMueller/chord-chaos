@@ -68,6 +68,14 @@ button {
   font-size: 1rem;
 }
 
+.chord-diagram {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 300px;
+  height: auto;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

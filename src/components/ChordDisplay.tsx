@@ -31,22 +31,24 @@ export default function ChordDisplay({
         </span>
       </h2>
 
-      <Chord
-        chord={{
-          name: `${note}${form}`,
-          frets: data.frets,
-          fingers: data.fingers,
-          barres: data.barres,
-          baseFret: data.baseFret,
-          capo: data.capo,
-        }}
-        instrument={{
-          strings: 6,
-          fretsOnChord: 4,
-          name: "Guitar",
-          tunings: { standard: ["E", "A", "D", "G", "B", "E"] },
-        }}
-      />
+      <div className="chord-diagram">
+        <Chord
+          chord={{
+            name: `${note}${form}`,
+            frets: data.frets,
+            fingers: data.fingers,
+            barres: data.barres,
+            baseFret: data.baseFret,
+            capo: data.capo,
+          }}
+          instrument={{
+            strings: 6,
+            fretsOnChord: 4,
+            name: "Guitar",
+            tunings: { standard: ["E", "A", "D", "G", "B", "E"] },
+          }}
+        />
+      </div>
     </div>
   );
 }

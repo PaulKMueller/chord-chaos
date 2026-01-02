@@ -58,3 +58,14 @@ export const getShapeName = (frets: number[]): string => {
       return "Unknown";
   }
 };
+
+export function pickDistinctChordPair(): [ChordSelection, ChordSelection] {
+  const a = getRandomChord();
+  let b = getRandomChord();
+
+  while (a.note === b.note && a.form === b.form && a.version === b.version) {
+    b = getRandomChord();
+  }
+
+  return [a, b];
+}

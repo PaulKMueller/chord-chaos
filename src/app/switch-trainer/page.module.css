@@ -1,10 +1,248 @@
+/* Page */
+.page {
+  min-height: 100vh;
+  background-color: var(--page-bg, #ffffff);
+  padding: 40px;
+  transition: background-color 0.5s ease;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.header {
+  margin-bottom: 30px;
+}
+
+.title {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.subtle {
+  font-size: 1.2rem;
+  color: #64748b;
+}
+
+/* Controls (match original inline styles) */
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.startPauseBtn {
+  padding: 10px 25px;
+  border-radius: 8px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.startBtn {
+  background-color: #22c55e;
+}
+
+.pauseBtn {
+  background-color: #ef4444;
+}
+
+.bpmPill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #f1f5f9;
+  padding: 5px 15px;
+  border-radius: 8px;
+}
+
+.bpmInput {
+  width: 70px;
+  border: none;
+  background: transparent;
+  text-align: center;
+  font-weight: bold;
+}
+
+.secondaryBtn {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  background: white;
+  cursor: pointer;
+}
+
+/* Beat dots */
+.beatRow {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+  transition: opacity 0.15s ease;
+}
+
+.beatDot {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #e2e8f0;
+  transform: scale(1);
+  transition: all 0.1s;
+}
+
+.beatDotOn {
+  background-color: #94a3b8; /* normal beat */
+  transform: scale(1.3);
+}
+
+.beatDotDownbeatOn {
+  background-color: #2563eb; /* beat 0 */
+}
+
+/* Chord grid (restore original: 2 columns, 30 gap, margin top) */
 .chordCompare {
   display: flex;
   flex-direction: row;
 }
 
-/* Change flex-direction to column on smaller screens */
-@media (max-width: 900px) {
+.chordCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  border-radius: 16px;
+  background-color: white;
+  border: none;
+
+  --active-ring: 6px;
+
+  height: 500px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  z-index: 0; /* important */
+}
+
+/* the ring */
+.chordCardActive::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+
+  box-shadow: 0 0 0 var(--active-ring) #3b82f6;
+
+  z-index: 0; /* behind content */
+}
+
+/* force all card content above the ring */
+.chordCard > * {
+  position: relative;
+  z-index: 1;
+}
+
+.chordCardActive {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+.chordCardInactive {
+  transform: scale(0.9);
+  opacity: 0.2;
+  box-shadow: none;
+}
+.playingBadge {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #3b82f6;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 0.8rem;
+}
+
+.chordTitle {
+  font-size: 2rem;
+}
+
+.chordTitleActive {
+  color: #1e40af;
+}
+
+.chordTitleInactive {
+  color: #94a3b8;
+}
+
+.diagramWrap {
+  height: 250px;
+  transition: opacity 0.2s ease;
+}
+
+/* Finish overlay (restore original modal) */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.overlayCard {
+  background-color: white;
+  padding: 40px;
+  border-radius: 20px;
+  max-width: 400px;
+  width: calc(100% - 40px);
+  text-align: left;
+}
+
+.overlayTitle {
+  margin: 0 0 10px 0;
+}
+
+.overlayText {
+  margin: 0;
+  color: #334155;
+}
+
+.overlayButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.overlayPrimaryBtn {
+  padding: 12px;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.overlaySecondaryBtn {
+  padding: 12px;
+  background-color: #f1f5f9;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* Change chord Compare layout to column for small screens */
+@media (max-width: 800px) {
   .chordCompare {
     flex-direction: column;
   }
