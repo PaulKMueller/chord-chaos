@@ -7,6 +7,7 @@ declare module "@tombatossals/react-chords/lib/Chord" {
       frets: number[];
       fingers: number[];
       barres: number[];
+      baseFret: number;
       capo: boolean;
     };
     instrument: {
