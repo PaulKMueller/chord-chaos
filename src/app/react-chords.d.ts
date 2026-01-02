@@ -16,6 +16,7 @@ declare module "@tombatossals/react-chords/lib/Chord" {
       name: string;
       tunings: { [key: string]: string[] };
     };
+    lite?: boolean;
   }
 
   const Chord: React.ComponentType<ChordProps>;

@@ -31,7 +31,7 @@ export default function SwitchTrainerPage() {
   const bg = !isActive ? "#ffffff" : activeIndex === 0 ? "#f8fafc" : "#fffbeb";
 
   return (
-    <main className={styles.page} style={{ ["--page-bg" as any]: bg }}>
+    <main className={styles.page}>
       <div className={styles.container}>
         <header className={styles.header}>
           <h1 className={styles.title}>Switch Trainer</h1>
@@ -72,6 +72,9 @@ export default function SwitchTrainerPage() {
         <ProgressBar progress={progress} />
 
         <BeatIndicator beat={beat} flash={flash} />
+        <br />
+        <br />
+        <br />
 
         {/* Chord Switching Grid (restore original spacing + size) */}
         <div className={styles.chordCompare}>

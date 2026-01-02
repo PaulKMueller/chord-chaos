@@ -1,12 +1,59 @@
 :root {
+  /* Base */
   --background: #ffffff;
   --foreground: #171717;
+
+  /* Surfaces */
+  --surface: #ffffff;
+  --surface-muted: #f1f5f9;
+
+  /* Text */
+  --text-primary: #171717;
+  --text-secondary: #64748b;
+  --text-muted: #94a3b8;
+  --text-inverse: #ffffff;
+
+  /* Accent / brand */
+  --accent: #2563eb;
+  --accent-strong: #3b82f6;
+  --accent-soft: #007bff;
+
+  /* States */
+  --success: #22c55e;
+  --danger: #ef4444;
+
+  /* Borders */
+  --border-default: #cbd5e1;
+
+  /* Overlays */
+  --overlay-bg: rgba(0, 0, 0, 0.8);
+
+  /* Shadows */
+  --shadow-active: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+
+    --surface: #0f172a;
+    --surface-muted: #1e293b;
+
+    --text-primary: #ededed;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    --text-inverse: #0a0a0a;
+
+    --accent: #60a5fa;
+    --accent-strong: #3b82f6;
+    --accent-soft: #2563eb;
+
+    --border-default: #334155;
+
+    --overlay-bg: rgba(0, 0, 0, 0.8);
+
+    --shadow-active: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
   }
 }
 

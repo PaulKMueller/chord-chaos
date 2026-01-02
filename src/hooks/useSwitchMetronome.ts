@@ -7,10 +7,12 @@ export function useSwitchMetronome({
   bpm,
   sessionTime,
   beatsPerBar = 4,
+  soundOn = true,
 }: {
   bpm: number;
   sessionTime: number;
   beatsPerBar?: number;
+  soundOn?: boolean;
 }) {
   const [isActive, setIsActive] = useState(false);
   const [isFinished, setIsFinished] = useState(false);
@@ -19,7 +21,11 @@ export function useSwitchMetronome({
   const [timeLeft, setTimeLeft] = useState(sessionTime);
   const [progress, setProgress] = useState(0);
   const [flash, setFlash] = useState(false);
+  const soundOnRef = useRef(soundOn);
 
+  useEffect(() => {
+    soundOnRef.current = soundOn;
+  }, [soundOn]);
   const audioRef = useRef<MetronomeAudio | null>(null);
   const intervalRef = useRef<number | null>(null);
   const rafRef = useRef<number | null>(null);
@@ -63,7 +69,9 @@ export function useSwitchMetronome({
       beatRef.current = nextBeat;
       setBeat(nextBeat);
 
-      audioRef.current?.playTick(nextBeat === 0);
+      if (soundOnRef.current) {
+        audioRef.current?.playTick(nextBeat === 0);
+      }
 
       if (nextBeat === 0) {
         setActiveIndex((i) => (i === 0 ? 1 : 0));

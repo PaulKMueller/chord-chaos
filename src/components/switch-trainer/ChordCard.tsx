@@ -12,6 +12,7 @@ export function ChordCard({
   showDiagrams: boolean;
 }) {
   const data = getChordData(chord.note, chord.form, chord.version);
+  const shapeName = data ? getShapeName(data.frets) : null;
 
   return (
     <div
@@ -29,11 +30,12 @@ export function ChordCard({
         {chord.note} {chord.form}
       </h2>
 
-      <div
-        className={styles.diagramWrap}
-        style={{ opacity: showDiagrams ? 1 : 0 }}
-      >
-        {data && (
+      <div className={styles.shapeLabel}>
+        {shapeName ? `Shape: ${shapeName}` : "Shape: —"}
+      </div>
+
+      <div className={styles.diagramWrap}>
+        {showDiagrams && data && (
           <ChordDisplay
             note={chord.note}
             form={chord.form}
